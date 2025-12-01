@@ -1,0 +1,3 @@
+# 🎄 Advent Of Code 2025
+
+I'm giving F# a shot this year. Let's see how for it'll get me...
