@@ -13,7 +13,6 @@ let split str =
     let mid = String.length str / 2
     str[.. mid - 1], str[mid..]
 
-
 let isInvalid x =
     let asString = x.ToString()
 
@@ -23,17 +22,13 @@ let isInvalid x =
 
 let isRepeating str =
     let len = String.length str
+    let isValidSize size = len % size = 0
+    let segment size = str[.. size - 1]
 
-    seq {
-        for size in 1 .. len / 2 do
-            if len % size = 0 then
-                let segment = str[.. size - 1]
-                let repetitions = len / size
+    let isMatch size =
+        String.replicate (len / size) (segment size) = str
 
-                if String.replicate repetitions segment = str then
-                    yield true
-    }
-    |> Seq.isEmpty |> not
+    seq { 1 .. len / 2 } |> Seq.filter isValidSize |> Seq.exists isMatch
 
 let isInvalid2 x =
     let asString = x.ToString()
