@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/Tests/">
+    <Project Path="Day2.Tests/Day2.Tests.fsproj" />
+  </Folder>
   <Project Path="Day1/Day1.fsproj" />
   <Project Path="Day2/Day2.fsproj" />
 </Solution>
