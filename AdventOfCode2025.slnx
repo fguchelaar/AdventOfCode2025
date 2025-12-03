@@ -4,4 +4,5 @@
   </Folder>
   <Project Path="Day1/Day1.fsproj" />
   <Project Path="Day2/Day2.fsproj" />
+  <Project Path="Day3/Day3.fsproj" />
 </Solution>
