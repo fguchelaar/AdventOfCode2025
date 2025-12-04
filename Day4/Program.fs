@@ -1,5 +1,5 @@
-﻿open System.IO
-open Day2.Logic
+open System.IO
+open Day4.Logic
 
 let input = File.ReadAllText "input.txt"
 
