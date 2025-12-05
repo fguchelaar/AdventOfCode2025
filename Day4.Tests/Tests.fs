@@ -12,4 +12,4 @@ let ``part1 should compute correct sum for sample input`` () =
 [<Fact>]
 let ``part2 should compute correct sum for sample input`` () =
     let result = File.ReadAllText "test.txt" |> part2
-    Assert.Equal(0, result)
+    Assert.Equal(43, result)

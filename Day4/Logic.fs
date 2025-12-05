@@ -28,8 +28,26 @@ let isAccessible point grid =
     (Map.tryFind point grid = Some '@')
     && n8 point |> List.filter (fun p -> Map.tryFind p grid = Some '@') |> List.length < 4
 
-let part1 input =
-    let grid = parseGrid input
-    grid |> Map.filter (fun p _ -> isAccessible p grid) |> Map.count
+let accessiblePoints grid =
+    grid |> Map.filter (fun p _ -> isAccessible p grid) |> Map.toSeq |> Seq.map fst
 
-let part2 input = -1
+let part1 input =
+    parseGrid input |> accessiblePoints |> Seq.length
+
+let allAccessiblePoints grid =
+    let rec loop removed =
+        // Remove already known removed points
+        let cleanedGrid = grid |> Map.filter (fun p _ -> not (Set.contains p removed))
+
+        let toRemove = accessiblePoints cleanedGrid |> Set.ofSeq // convert once
+
+        if Set.isEmpty toRemove then
+            removed
+        else
+            Set.union removed toRemove |> loop
+
+    accessiblePoints grid |> Set.ofSeq |> loop
+
+let part2 input =
+    let grid = parseGrid input
+    allAccessiblePoints grid |> Seq.length
