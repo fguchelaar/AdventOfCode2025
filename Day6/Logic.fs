@@ -33,30 +33,20 @@ let parse2 (input: string) =
     |> Seq.map _.ToCharArray()
     |> Seq.transpose
 
-// take the operator of the first line. Then apply it to all lines, until a blank line is found. Then repeat.
-let brute (lines: string seq) : int64 =
-    let mutable total = 0L
-    let mutable func = add
-    let mutable currentNumbers = ResizeArray<int64>()
+let brute (lines: string seq) =
+    let groups =
+        lines
+        |> Seq.map _.Trim()
+        |> Seq.fold (fun (acc, cur) s -> if s = "" then (cur :: acc, []) else (acc, s :: cur)) ([], [])
+        |> fun (acc, cur) -> if List.isEmpty cur then acc else cur :: acc
+        |> List.map List.rev
 
-    // add an extra empty line to force final computation
-    let lines = Seq.append lines (seq { yield " " })
+    let eval (group: string list) =
+        let op = group.First() |> _.Last() |> string |> useFunc
+        let nums = group |> List.map (fun s -> Int64.Parse(s.Trim('+', '*', ' ')))
+        perform op nums
 
-    for line in lines do
-        let operator = line.Last()
-
-        if operator = '+' || operator = '*' then
-            func <- useFunc (operator.ToString())
-            currentNumbers.Clear()
-
-        if line.Trim().Length = 0 then
-            let currentTotal = perform func currentNumbers
-            total <- total + currentTotal
-        else
-            let number = Int64.Parse(line.Trim('+', '*', ' '))
-            currentNumbers.Add(number)
-
-    total
+    groups |> List.sumBy eval |> int64
 
 let part2 input =
     input |> parse2 |> Seq.map (fun chars -> String(chars.ToArray())) |> brute
