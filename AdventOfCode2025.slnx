@@ -3,10 +3,12 @@
     <Project Path="Day2.Tests/Day2.Tests.fsproj" />
     <Project Path="Day4.Tests/Day4.Tests.fsproj" />
     <Project Path="Day5.Tests/Day5.Tests.fsproj" />
+    <Project Path="Day6.Tests/Day6.Tests.fsproj" />
   </Folder>
   <Project Path="Day1/Day1.fsproj" />
   <Project Path="Day2/Day2.fsproj" />
   <Project Path="Day3/Day3.fsproj" />
   <Project Path="Day4/Day4.fsproj" />
   <Project Path="Day5/Day5.fsproj" />
+  <Project Path="Day6/Day6.fsproj" />
 </Solution>
