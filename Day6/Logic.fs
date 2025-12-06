@@ -28,12 +28,13 @@ let parseInput (input: string) =
 let part1 input =
     input |> parseInput |> Seq.map eval |> Seq.sum
 
-let parse2 (input: string) =
+let parseInput2 (input: string) =
     input.Split("\n", StringSplitOptions.RemoveEmptyEntries)
     |> Seq.map _.ToCharArray()
     |> Seq.transpose
+    |> Seq.map (fun chars -> String(chars.ToArray()))
 
-let brute (lines: string seq) =
+let eval2 (lines: string seq) =
     let groups =
         lines
         |> Seq.map _.Trim()
@@ -41,12 +42,11 @@ let brute (lines: string seq) =
         |> fun (acc, cur) -> if List.isEmpty cur then acc else cur :: acc
         |> List.map List.rev
 
-    let eval (group: string list) =
+    let localEval (group: string list) =
         let op = group.First() |> _.Last() |> string |> useFunc
         let nums = group |> List.map (fun s -> Int64.Parse(s.Trim('+', '*', ' ')))
         perform op nums
 
-    groups |> List.sumBy eval |> int64
+    groups |> List.sumBy localEval
 
-let part2 input =
-    input |> parse2 |> Seq.map (fun chars -> String(chars.ToArray())) |> brute
+let part2 input = input |> parseInput2 |> eval2
