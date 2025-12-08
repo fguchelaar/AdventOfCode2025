@@ -35,8 +35,6 @@ let combinations (points: Point3D seq) =
                 yield (pointList[i], pointList[j])
     }
 
-let distanceBetweenPoints (p1: Point3D, p2: Point3D) = (p1, p2, p1.distanceTo p2)
-
 let connectPoints (connectCount: int) (pairs: (Point3D * Point3D) seq) =
     let groups = List<HashSet<Point3D>>()
 
