@@ -8,16 +8,6 @@ type Point3D =
       Y: int64
       Z: int64 }
 
-    static member (+)(a: Point3D, b: Point3D) =
-        { X = a.X + b.X
-          Y = a.Y + b.Y
-          Z = a.Z + b.Z }
-
-    static member (-)(a: Point3D, b: Point3D) =
-        { X = a.X - b.X
-          Y = a.Y - b.Y
-          Z = a.Z - b.Z }
-
     static member Zero = { X = 0; Y = 0; Z = 0 }
 
     member this.distanceTo(other: Point3D) =
