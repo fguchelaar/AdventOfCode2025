@@ -14,7 +14,7 @@ let ``Point3D distanceTo should compute correct distance``
     =
     let p1 = { X = x1; Y = y1; Z = z1 }
     let p2 = { X = x2; Y = y2; Z = z2 }
-    let result = p1.distanceTo (p2)
+    let result = distance p1 p2
     Assert.Equal(expected, result, 8)
 
 [<Fact>]

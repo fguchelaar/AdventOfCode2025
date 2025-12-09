@@ -6,6 +6,7 @@
     <Project Path="Day6.Tests/Day6.Tests.fsproj" />
     <Project Path="Day7.Tests/Day7.Tests.fsproj" />
     <Project Path="Day8.Tests/Day8.Tests.fsproj" />
+    <Project Path="Day9.Tests/Day9.Tests.fsproj" />
   </Folder>
   <Project Path="Day1/Day1.fsproj" />
   <Project Path="Day2/Day2.fsproj" />
@@ -15,4 +16,5 @@
   <Project Path="Day6/Day6.fsproj" />
   <Project Path="Day7/Day7.fsproj" />
   <Project Path="Day8\Day8.fsproj" />
+  <Project Path="Day9/Day9.fsproj" />
 </Solution>
